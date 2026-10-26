@@ -5,7 +5,6 @@ Prints exactly 'ALL CHECKPOINTS PASSED' when all hold.
 import os
 import sqlite3
 import pandas as pd
-import numpy as np
 
 def validate():
     db_path = os.path.join("data", "instamart.db")

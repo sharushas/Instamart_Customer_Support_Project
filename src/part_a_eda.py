@@ -3,7 +3,6 @@ Part A Task 7: pandas cross-check, pivot table, summary stats, IQR fences, and c
 """
 import os
 import pandas as pd
-import numpy as np
 
 def run_eda():
     clean_dir = os.path.join("data", "clean")

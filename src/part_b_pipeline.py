@@ -8,7 +8,7 @@ import numpy as np
 
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_score, classification_report, confusion_matrix, f1_score, precision_score, recall_score, accuracy_score
+from sklearn.metrics import silhouette_score, confusion_matrix, f1_score, precision_score, recall_score, accuracy_score
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.linear_model import LogisticRegression
