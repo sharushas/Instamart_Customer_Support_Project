@@ -73,6 +73,33 @@ The raw files were loaded into pandas with `keep_default_na=False` on `tickets.c
 | `products.csv` | 40 | 4 | 0 missing values, valid catalog |
 | `tickets.csv` | 164 | 5 | 4 empty tickets, 4 extremely long tickets (~520 words, 734 estimated tokens) |
 
+#### Column-by-Column Schema & Missing Values Audit
+| Table | Column Name | Raw Data Type | Missing Count | Missing Percentage | Audit Finding / Anomaly |
+| :--- | :--- | :---: | :---: | :---: | :--- |
+| **`customers.csv`** | `customer_id` | `object` (string) | 0 | 0.00% | Unique identifier C0001–C1200 |
+| | `city` | `object` (string) | 0 | 0.00% | 24 messy casing/space variants |
+| | `signup_date` | `object` (string) | 0 | 0.00% | ISO date strings YYYY-MM-DD |
+| | `age` | `object` (string) | 61 | 5.08% | 61 blank + 6 impossible ages (-4, 0, 150, 200, 280, 999) |
+| | `gender` | `object` (string) | 30 | 2.50% | 30 blank + 10 distinct casing variants |
+| **`products.csv`** | `product_id` | `object` (string) | 0 | 0.00% | P001–P040 |
+| | `product_name` | `object` (string) | 0 | 0.00% | Catalog item descriptions |
+| | `category` | `object` (string) | 0 | 0.00% | 5 categories: Grocery, Dairy, Snacks, Personal Care, Electronics |
+| | `price_inr` | `int64` | 0 | 0.00% | Integer prices in INR (20 to 1999) |
+| **`orders.csv`** | `order_id` | `object` (string) | 0 | 0.00% | 12,309 unique IDs; 119 exact duplicates + 656 pending duplicates |
+| | `customer_id` | `object` (string) | 0 | 0.00% | Customer mapping |
+| | `product_id` | `object` (string) | 0 | 0.00% | Product catalog foreign key |
+| | `quantity` | `int64` | 0 | 0.00% | Order quantity (1 to 3 items) |
+| | `order_ts` | `object` (string) | 0 | 0.00% | Timestamp YYYY-MM-DD HH:MM:SS |
+| | `status` | `object` (string) | 0 | 0.00% | completed, cancelled, pending |
+| | `discount_pct` | `int64` | 0 | 0.00% | Promotion discount (0% to 40%) |
+| | `order_amount` | `object` (string) | 0 | 0.00% | 120 unparseable corrupted entries ('N/A', 'error') |
+| | `delivery_minutes` | `object` (string) | 2,541 | 19.42% | 2,541 blank + 106 impossible negative (-10) durations |
+| **`tickets.csv`** | `ticket_id` | `object` (string) | 0 | 0.00% | T0001–T0164 |
+| | `customer_id` | `object` (string) | 0 | 0.00% | Customer mapping |
+| | `order_id` | `object` (string) | 8 | 4.88% | 8 blank (4 empty tickets + 4 long tickets) |
+| | `text` | `object` (string) | 4 | 2.44% | 4 completely empty ticket texts |
+| | `true_category` | `object` (string) | 0 | 0.00% | billing, delivery, technical, fraud, none |
+
 #### Specific Audit Checkpoints
 - **Raw orders rows**: 13,084
 - **Exact duplicate rows**: 119
