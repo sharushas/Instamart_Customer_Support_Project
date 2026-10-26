@@ -6,3 +6,6 @@ __pycache__/
 .python-version
 powershell.cmd
 state/run_WEB_*.json
+state/run_LIVE_*.json
+state/run_TEST_*.json
+state/*.json
