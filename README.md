@@ -55,11 +55,11 @@ python src/ticket_triage.py
 python src/policy_agent.py
 
 # 12. Run the interactive Customer Intelligence & Support Copilot CLI
-python chatbot.py
+python copilot.py
 ```
 
-### Interactive Customer Intelligence & Support Copilot (`chatbot.py` / `copilot.py`)
-The terminal Copilot application (`chatbot.py` or `copilot.py`) unifies all four project components into an interactive console tool:
+### Interactive Customer Intelligence & Support Copilot (`copilot.py`)
+The terminal Copilot application (`copilot.py`) unifies all four project components into an interactive console tool:
 1. **Guided Sequential Tour**: Sequentially executes Parts A through D with interactive step approval.
 2. **Policy RAG Assistant**: Interactively queries the 15-chunk TF-IDF knowledge base over company policies.
 3. **Autonomous Refund ReAct Agent**: Live planning and execution of database lookups, policy validation, and refund issuance/escalation.
