@@ -53,7 +53,22 @@ python src/part_c_pipeline.py
 
 # 11. Run Part D: Policy RAG evaluation, ReAct refund scenarios, and crash-resume test
 python src/part_d_pipeline.py
+
+# 12. Run the interactive Customer Intelligence & Support Copilot CLI
+python copilot.py
+
+# 13. Run automated integration test suite
+python tests/test_copilot_integration.py
 ```
+
+### Interactive Customer Intelligence & Support Copilot (`copilot.py`)
+The terminal Copilot application (`copilot.py`, aliased by `chatbot.py`) unifies all four project components into an interactive console tool:
+1. **Guided Sequential Tour**: Sequentially executes Parts A through D with interactive step approval.
+2. **Policy RAG Assistant**: Interactively queries the 15-chunk TF-IDF knowledge base over company policies.
+3. **Autonomous Refund ReAct Agent**: Live planning and execution of database lookups, policy validation, and refund issuance/escalation.
+4. **Support Ticket Triage**: Live input sanitization (Email $\rightarrow$ Phone $\rightarrow$ Order ID), token budget bounds, few-shot classification, and segment routing.
+5. **Customer Intelligence & Churn Predictor**: Retrieves RFM statistics and calculates machine-learning churn risk probabilities from `outputs/lapse_model.joblib`.
+6. **Smart Conversational Copilot**: Multi-intent natural language understanding with automatic disambiguation between policy inquiries, customer profile queries, refund requests, and support tickets.
 
 ---
 
