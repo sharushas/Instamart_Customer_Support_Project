@@ -1,5 +1,5 @@
 """tests/test_chatbot_integration.py
-Automated validation of chatbot components against Capstone benchmarks.
+Automated validation of Copilot components against Capstone benchmarks.
 """
 import os
 import sys
@@ -94,7 +94,7 @@ def test_part_d_agent_scenarios():
     assert res_s7["status"] == "FALLBACK_MAX_ITERATIONS"
 
 def test_smart_copilot_intent_routing():
-    from chatbot import InstamartCopilot
+    from copilot import InstamartCopilot
     copilot = InstamartCopilot()
 
     assert copilot.detect_intent("Why was ORD-100048 delayed?") == "policy_qa"
@@ -107,7 +107,7 @@ def test_smart_copilot_intent_routing():
     assert copilot.detect_intent("The app crashed during checkout") == "triage"
 
 def test_part_b_customer_intelligence():
-    from chatbot import InstamartCopilot
+    from copilot import InstamartCopilot
     copilot = InstamartCopilot()
     assert "C0082" in copilot.seg_map
     assert copilot.seg_map["C0082"]["is_premium"] == True

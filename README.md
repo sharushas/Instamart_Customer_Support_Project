@@ -62,7 +62,7 @@ python tests/test_copilot_integration.py
 ```
 
 ### Interactive Customer Intelligence & Support Copilot (`copilot.py`)
-The terminal Copilot application (`copilot.py`, aliased by `chatbot.py`) unifies all four project components into an interactive console tool:
+The terminal Copilot application (`copilot.py`) unifies all four project components into an interactive console tool:
 1. **Guided Sequential Tour**: Sequentially executes Parts A through D with interactive step approval.
 2. **Policy RAG Assistant**: Interactively queries the 15-chunk TF-IDF knowledge base over company policies.
 3. **Autonomous Refund ReAct Agent**: Live planning and execution of database lookups, policy validation, and refund issuance/escalation.
