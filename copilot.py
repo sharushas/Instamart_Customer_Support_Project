@@ -20,13 +20,13 @@ import joblib
 
 sys.path.insert(0, os.path.abspath("."))
 
-from src.part_a_pipeline import run_part_a
+from src.data_cleaner import run_part_a
 from src.validate_checkpoints import validate as validate_part_a
 from src.run_sql_queries import run_queries as run_sql
-from src.part_a_eda import run_eda
-from src.part_b_pipeline import run_part_b
+from src.eda_summary import run_eda
+from src.customer_intelligence import run_part_b
 from mock_llm import TransientLLMError
-from src.part_c_pipeline import (
+from src.ticket_triage import (
     redact_pii,
     call_mock_with_retry,
     validate_response,
@@ -34,7 +34,7 @@ from src.part_c_pipeline import (
     est_tokens,
     MAX_INPUT_TOKENS
 )
-from src.part_d_pipeline import (
+from src.policy_agent import (
     load_policy_chunks,
     PolicyRetriever,
     answer_policy_question,
@@ -75,13 +75,13 @@ class InstamartCopilot:
         """Runs the complete project sequentially from Step 1 to Step 8."""
         steps = [
             ("Step 1: Generate Synthetic Raw Data & Policies", "generate_data.py", None),
-            ("Step 2: Part A - Clean Raw Data & Populate SQLite DB", "src/part_a_pipeline.py", run_part_a),
-            ("Step 3: Part A - Validate 9 Reference Checkpoints", "src/validate_checkpoints.py", validate_part_a),
-            ("Step 4: Part A - Analytical SQL Queries (Q1 to Q7)", "src/run_sql_queries.py", run_sql),
-            ("Step 5: Part A - Exploratory Data Analysis & Statistics", "src/part_a_eda.py", run_eda),
-            ("Step 6: Part B - RFM Segmentation, K-Means, & Lapse Model", "src/part_b_pipeline.py", run_part_b),
-            ("Step 7: Part C - Support Ticket Triage with Guardrails", "src/part_c_pipeline.py", None),
-            ("Step 8: Part D - Policy RAG & ReAct Refund Agent Scenarios", "src/part_d_pipeline.py", None),
+            ("Step 2: Clean Raw Data & Populate SQLite DB", "src/data_cleaner.py", run_part_a),
+            ("Step 3: Validate 9 Reference Checkpoints", "src/validate_checkpoints.py", validate_part_a),
+            ("Step 4: Analytical SQL Queries (Q1 to Q7)", "src/run_sql_queries.py", run_sql),
+            ("Step 5: Exploratory Data Analysis & Statistics", "src/eda_summary.py", run_eda),
+            ("Step 6: Customer Intelligence, RFM, & Lapse Model", "src/customer_intelligence.py", run_part_b),
+            ("Step 7: Support Ticket Triage with Guardrails", "src/ticket_triage.py", None),
+            ("Step 8: Policy RAG & ReAct Refund Agent Scenarios", "src/policy_agent.py", None),
         ]
 
         print("\n" + "="*70)

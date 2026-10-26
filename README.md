@@ -34,7 +34,7 @@ pip install -r requirements.txt
 python generate_data.py
 
 # 5. Run Part A: Clean raw data, populate SQLite database, and export clean CSVs
-python src/part_a_pipeline.py
+python src/data_cleaner.py
 
 # 6. Validate Part A reference checkpoints
 python src/validate_checkpoints.py
@@ -43,23 +43,23 @@ python src/validate_checkpoints.py
 python src/run_sql_queries.py
 
 # 8. Run Part A Exploratory Data Analysis & pandas cross-checks
-python src/part_a_eda.py
+python src/eda_summary.py
 
 # 9. Run Part B: RFM segmentation, K-Means clustering, PCA, and lapse model tuning
-python src/part_b_pipeline.py
+python src/customer_intelligence.py
 
 # 10. Run Part C: Ticket triage, PII redaction, prompt comparison, budget demo, and routing
-python src/part_c_pipeline.py
+python src/ticket_triage.py
 
 # 11. Run Part D: Policy RAG evaluation, ReAct refund scenarios, and crash-resume test
-python src/part_d_pipeline.py
+python src/policy_agent.py
 
 # 12. Run the interactive Customer Intelligence & Support Copilot CLI
-python copilot.py
+python chatbot.py
 ```
 
-### Interactive Customer Intelligence & Support Copilot (`copilot.py`)
-The terminal Copilot application (`copilot.py`) unifies all four project components into an interactive console tool:
+### Interactive Customer Intelligence & Support Copilot (`chatbot.py` / `copilot.py`)
+The terminal Copilot application (`chatbot.py` or `copilot.py`) unifies all four project components into an interactive console tool:
 1. **Guided Sequential Tour**: Sequentially executes Parts A through D with interactive step approval.
 2. **Policy RAG Assistant**: Interactively queries the 15-chunk TF-IDF knowledge base over company policies.
 3. **Autonomous Refund ReAct Agent**: Live planning and execution of database lookups, policy validation, and refund issuance/escalation.

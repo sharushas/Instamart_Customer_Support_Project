@@ -1,4 +1,4 @@
-"""src/part_a_pipeline.py
+"""src/data_cleaner.py
 Part A: Clean, Store, Validate, Query and Analyze Instamart data.
 """
 import os

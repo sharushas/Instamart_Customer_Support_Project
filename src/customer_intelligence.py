@@ -1,4 +1,4 @@
-"""src/part_b_pipeline.py
+"""src/customer_intelligence.py
 Part B: Customer Segments (RFM, KMeans, PCA) and Lapse Prediction (Pipeline, Tuning, Evaluation).
 """
 import os

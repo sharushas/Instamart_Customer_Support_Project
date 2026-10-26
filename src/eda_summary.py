@@ -1,4 +1,4 @@
-"""src/part_a_eda.py
+"""src/eda_summary.py
 Part A Task 7: pandas cross-check, pivot table, summary stats, IQR fences, and correlation matrix.
 """
 import os

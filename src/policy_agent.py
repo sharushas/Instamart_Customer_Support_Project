@@ -1,4 +1,4 @@
-"""src/part_d_pipeline.py
+"""src/policy_agent.py
 Part D: Policy RAG Assistant and ReAct Refund Agent with State Checkpointing,
 Safe Fallbacks, Ledger Logging, and Resume Capability.
 """

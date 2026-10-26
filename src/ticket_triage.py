@@ -1,3 +1,6 @@
+"""src/ticket_triage.py
+Part C: Support Ticket Triage, PII Redaction, Token Budgeting, and SLA Routing.
+"""
 import os
 import sys
 import re
