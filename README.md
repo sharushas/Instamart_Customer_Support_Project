@@ -12,7 +12,6 @@ This repository implements the complete end-to-end **Customer Intelligence & Sup
 - **Part B (Customer Segments & Lapse Prediction)**: Derives an RFM segmentation (K-Means K=4, PCA), defines a strictly leakage-free churn prediction dataset, and trains tuned classification models (Random Forest and Logistic Regression) with class-balancing experiments.
 - **Part C (Support Ticket Triage with Guardrails)**: Implements privacy guardrails (PII redaction), input token bounds, resilient exponential backoff with jitter against transient server failures, rule-based output validation, and intelligent customer-segment routing.
 - **Part D (Policy RAG Assistant & Refund ReAct Agent)**: Implements a TF-IDF grounded policy knowledge retrieval system and an autonomous ReAct refund agent that executes database queries, enforces policy limits, maintains state checkpoints, supports crash recovery, and guarantees graceful fallbacks.
-- **Web UI & Interactive Copilot Dashboard**: A dedicated, interactive web interface (`web/index.html` served via `app.py`) providing a customer support chatbot, real-time ticket triage tester, interactive RFM segment explorer, and live ML churn risk calculator.
 
 ---
 
@@ -54,9 +53,6 @@ python src/part_c_pipeline.py
 
 # 11. Run Part D: Policy RAG evaluation, ReAct refund scenarios, and crash-resume test
 python src/part_d_pipeline.py
-
-# 12. Optional: Launch the interactive Instamart Copilot Web UI
-python app.py
 ```
 
 ---
@@ -478,4 +474,3 @@ Under a plan-and-execute approach, the model would needlessly generate full refu
 1. **Post-Hoc Whole-Window Segment Flag**: The `is_premium` flag in `outputs/customer_segments.csv` and `outputs/retention_list.csv` was computed over the entire 6-month order history (including September 2025). While feature inputs for model training strictly respected the pre-September cutoff, the retention list serves an illustrative purpose rather than a strictly leakage-free evaluation. *Next Step*: Compute historical time-windowed RFM segments snapshot-aligned strictly prior to the churn observation window.
 2. **Lexical Retrieval Boundaries**: TF-IDF relies on exact keyword matching, occasionally struggling with vernacular queries or synonyms (e.g., "rider unreachable" vs. "undeliverable"). *Next Step*: Deploy dense vector embeddings (e.g., `text-embedding-3-small` or open-source sentence-transformers) paired with cosine similarity and hybrid BM25 reranking.
 3. **Simulated LLM Environment**: All model completions were driven deterministically by `mock_llm.py`. *Next Step*: Connect to production LLM APIs with streaming responses and asynchronous worker queues (Celery/Redis).
-4. **Interactive Copilot Web Application**: A full-stack web UI has been provided in `web/index.html` and `app.py`. Future iterations can incorporate real-time WebSockets, agent audio synthesis, and multi-tenant authorization.
